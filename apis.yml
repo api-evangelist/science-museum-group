@@ -1,0 +1,43 @@
+aid: science-museum-group
+name: Science Museum Group
+description: >-
+  The Science Museum Group Collection API provides programmatic access to the
+  museum's extensive collection of science, technology, and cultural artifacts.
+  The API enables developers to search, browse, and retrieve data about objects,
+  people, and events from the Science Museum Group's collections across its
+  five UK museums.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Museums
+  - Collections
+  - Cultural Heritage
+  - Open Data
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: science-museum-group:collection-api
+    name: Science Museum Group Collection API
+    description: >-
+      The Science Museum Group Collection API provides open access to data
+      about the museum's collection of science and technology artifacts,
+      people, and historical events across its five UK museums.
+    humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+    tags:
+      - Collections
+      - Museums
+      - Open Data
+    properties:
+      - type: Documentation
+        url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+common:
+  - type: GitHub Organization
+    url: https://github.com/TheScienceMuseum
+  - type: Website
+    url: https://www.sciencemuseumgroup.org.uk/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
