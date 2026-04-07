@@ -9,9 +9,9 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Museums
   - Collections
   - Cultural Heritage
+  - Museums
   - Open Data
 url: >-
   https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/apis.yml
