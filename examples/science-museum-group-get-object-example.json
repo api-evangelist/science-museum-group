@@ -1,0 +1,111 @@
+{
+  "description": "Example response from GET /objects/co26704",
+  "request": {
+    "method": "GET",
+    "url": "https://collection.sciencemuseumgroup.org.uk/objects/co26704"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "id": "co26704",
+        "type": "objects",
+        "attributes": {
+          "name": {
+            "value": "Boulton & Watt rotative steam engine",
+            "suffix": "1788",
+            "full": "Boulton & Watt rotative steam engine, 1788"
+          },
+          "summary": "A pioneering rotative steam engine by Boulton & Watt, 1788.",
+          "description": "This rotative steam engine by Matthew Boulton and James Watt was made in 1788 for the Whitbread Brewery in London. It is one of the oldest surviving steam engines in the world and a key artifact of the Industrial Revolution. The engine demonstrates the conversion of reciprocating motion to rotary motion via a sun-and-planet gear system invented by William Murdoch to circumvent Watt's patent on the crank.",
+          "date": {
+            "from": 1788,
+            "to": 1788,
+            "display": "1788",
+            "note": "Year of manufacture"
+          },
+          "images": {
+            "primary": {
+              "measurements": {
+                "resolution": 5616,
+                "dimensions": {
+                  "width": 5616,
+                  "height": 3744
+                }
+              },
+              "processed": {
+                "large": {
+                  "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/large_1927_1237__0001_.jpg",
+                  "width": 1024,
+                  "height": 683
+                },
+                "medium": {
+                  "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/medium_1927_1237__0001_.jpg",
+                  "width": 512,
+                  "height": 342
+                },
+                "thumbnail": {
+                  "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/thumbnail_1927_1237__0001_.jpg",
+                  "width": 150,
+                  "height": 100
+                }
+              },
+              "copyright": "Science Museum Group",
+              "license": "CC BY-NC-SA 4.0"
+            },
+            "all": [
+              {
+                "processed": {
+                  "thumbnail": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/thumbnail_1927_1237__0001_.jpg"
+                  }
+                }
+              }
+            ]
+          },
+          "museums": ["SMG"],
+          "on_display": true,
+          "location": {
+            "gallery": "Energy Hall",
+            "floor": "Ground",
+            "museum": "Science Museum, London",
+            "museum_code": "SMG"
+          },
+          "categories": ["Engineering", "Steam Power", "Industrial Revolution", "Power Sources"],
+          "places": ["London", "England", "United Kingdom"],
+          "measurements": {
+            "dimensions": "590 x 200 x 400 cm (height x width x depth)",
+            "weight": "Approximately 5 tonnes"
+          },
+          "accession_number": "1927-1237",
+          "acquisition_date": "1927"
+        },
+        "relationships": {
+          "makers": {
+            "data": [
+              {
+                "type": "people",
+                "id": "cp22644"
+              },
+              {
+                "type": "people",
+                "id": "cp22645"
+              }
+            ]
+          },
+          "documents": {
+            "data": [
+              {
+                "type": "documents",
+                "id": "cd12345"
+              }
+            ]
+          }
+        },
+        "links": {
+          "self": "https://collection.sciencemuseumgroup.org.uk/objects/co26704"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/science-museum-group/main/json-schema/science-museum-group-collection-object-schema.json",
+  "title": "Science Museum Group Collection Object",
+  "description": "A physical object or artifact in the Science Museum Group collection, returned as a JSONAPI resource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique collection object identifier (e.g., co26704)",
+      "pattern": "^co[0-9]+$",
+      "examples": ["co26704", "co67234"]
+    },
+    "type": {
+      "type": "string",
+      "const": "objects",
+      "description": "JSONAPI resource type"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Object attributes and metadata",
+      "properties": {
+        "name": {
+          "type": "object",
+          "description": "Name information for the object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Primary name of the object"
+            },
+            "suffix": {
+              "type": "string",
+              "description": "Additional naming qualifier (e.g., date)"
+            },
+            "full": {
+              "type": "string",
+              "description": "Full display name including suffix"
+            }
+          },
+          "required": ["value"]
+        },
+        "summary": {
+          "type": "string",
+          "description": "Brief summary description of the object"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed curatorial description"
+        },
+        "date": {
+          "type": "object",
+          "description": "Date information for the object",
+          "properties": {
+            "from": {
+              "type": "integer",
+              "description": "Earliest associated year"
+            },
+            "to": {
+              "type": "integer",
+              "description": "Latest associated year"
+            },
+            "display": {
+              "type": "string",
+              "description": "Human-readable date string"
+            },
+            "note": {
+              "type": "string",
+              "description": "Additional date context"
+            }
+          }
+        },
+        "images": {
+          "type": "object",
+          "description": "Image references for the object",
+          "properties": {
+            "primary": {
+              "type": "object",
+              "description": "Primary image for the object",
+              "properties": {
+                "processed": {
+                  "type": "object",
+                  "properties": {
+                    "large": {
+                      "$ref": "#/$defs/ImageSize"
+                    },
+                    "medium": {
+                      "$ref": "#/$defs/ImageSize"
+                    },
+                    "thumbnail": {
+                      "$ref": "#/$defs/ImageSize"
+                    }
+                  }
+                },
+                "measurements": {
+                  "type": "object",
+                  "properties": {
+                    "resolution": {
+                      "type": "integer"
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "width": {"type": "integer"},
+                        "height": {"type": "integer"}
+                      }
+                    }
+                  }
+                },
+                "copyright": {
+                  "type": "string",
+                  "description": "Copyright holder"
+                },
+                "license": {
+                  "type": "string",
+                  "description": "License for use of the image"
+                }
+              }
+            }
+          }
+        },
+        "museums": {
+          "type": "array",
+          "description": "Museum codes where the object is held",
+          "items": {
+            "type": "string",
+            "enum": ["SMG", "NRM", "NMeM", "MSI", "Locomotion"]
+          }
+        },
+        "on_display": {
+          "type": "boolean",
+          "description": "Whether the object is currently on public display"
+        },
+        "location": {
+          "type": "object",
+          "description": "Gallery or storage location",
+          "properties": {
+            "gallery": {
+              "type": "string",
+              "description": "Gallery name"
+            },
+            "floor": {
+              "type": "string",
+              "description": "Floor level"
+            },
+            "museum": {
+              "type": "string",
+              "description": "Full museum name"
+            },
+            "museum_code": {
+              "type": "string",
+              "description": "Museum code"
+            }
+          }
+        },
+        "categories": {
+          "type": "array",
+          "description": "Collection categories for the object",
+          "items": {
+            "type": "string"
+          }
+        },
+        "places": {
+          "type": "array",
+          "description": "Geographical associations",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accession_number": {
+          "type": "string",
+          "description": "Museum accession number"
+        },
+        "measurements": {
+          "type": "object",
+          "description": "Physical dimensions and weight",
+          "properties": {
+            "dimensions": {
+              "type": "string"
+            },
+            "weight": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": ["name"]
+    },
+    "relationships": {
+      "type": "object",
+      "description": "Related resources",
+      "properties": {
+        "makers": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ResourceIdentifier"
+              }
+            }
+          }
+        },
+        "people": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ResourceIdentifier"
+              }
+            }
+          }
+        },
+        "documents": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ResourceIdentifier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical URL for this object"
+        }
+      }
+    }
+  },
+  "required": ["id", "type", "attributes"],
+  "$defs": {
+    "ImageSize": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "format": "uri",
+          "description": "Image URL"
+        },
+        "width": {
+          "type": "integer",
+          "description": "Image width in pixels"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Image height in pixels"
+        }
+      }
+    },
+    "ResourceIdentifier": {
+      "type": "object",
+      "description": "JSONAPI resource identifier",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["objects", "people", "documents"]
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "id"]
+    }
+  }
+}

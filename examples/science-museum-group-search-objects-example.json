@@ -1,0 +1,129 @@
+{
+  "description": "Example response from GET /search/objects?q=steam+engine&museum=SMG&images=true&page[size]=2",
+  "request": {
+    "method": "GET",
+    "url": "https://collection.sciencemuseumgroup.org.uk/search/objects?q=steam+engine&museum=SMG&images=true&page[size]=2&page[number]=0"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": [
+        {
+          "id": "co26704",
+          "type": "objects",
+          "attributes": {
+            "name": {
+              "value": "Boulton & Watt rotative steam engine",
+              "suffix": "1788"
+            },
+            "summary": "A pioneering rotative steam engine by Boulton & Watt, 1788, representing the dawn of the Industrial Revolution.",
+            "date": {
+              "from": 1788,
+              "to": 1788,
+              "display": "1788"
+            },
+            "images": {
+              "primary": {
+                "measurements": {
+                  "resolution": 5616,
+                  "dimensions": {
+                    "width": 5616,
+                    "height": 3744
+                  }
+                },
+                "processed": {
+                  "large": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/large_1927_1237__0001_.jpg",
+                    "width": 1024,
+                    "height": 683
+                  },
+                  "medium": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/medium_1927_1237__0001_.jpg",
+                    "width": 512,
+                    "height": 342
+                  },
+                  "thumbnail": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/72/thumbnail_1927_1237__0001_.jpg",
+                    "width": 150,
+                    "height": 100
+                  }
+                },
+                "copyright": "Science Museum Group",
+                "license": "CC BY-NC-SA 4.0"
+              }
+            },
+            "museums": ["SMG"],
+            "on_display": true,
+            "location": {
+              "gallery": "Energy Hall",
+              "museum": "Science Museum, London"
+            },
+            "categories": ["Engineering", "Steam Power", "Industrial Revolution"]
+          },
+          "relationships": {
+            "makers": {
+              "data": [
+                {
+                  "type": "people",
+                  "id": "cp22644"
+                }
+              ]
+            }
+          },
+          "links": {
+            "self": "https://collection.sciencemuseumgroup.org.uk/objects/co26704"
+          }
+        },
+        {
+          "id": "co67234",
+          "type": "objects",
+          "attributes": {
+            "name": {
+              "value": "Model of Newcomen atmospheric steam engine"
+            },
+            "summary": "A working model of the Newcomen atmospheric steam engine, circa 1712.",
+            "date": {
+              "from": 1712,
+              "to": 1720,
+              "display": "circa 1712-1720"
+            },
+            "images": {
+              "primary": {
+                "processed": {
+                  "large": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/120/large_model_newcomen.jpg",
+                    "width": 1024,
+                    "height": 768
+                  },
+                  "thumbnail": {
+                    "location": "https://coimages.sciencemuseumgroup.org.uk/images/120/thumbnail_model_newcomen.jpg",
+                    "width": 150,
+                    "height": 113
+                  }
+                },
+                "copyright": "Science Museum Group",
+                "license": "CC BY-NC-SA 4.0"
+              }
+            },
+            "museums": ["SMG"],
+            "on_display": false,
+            "categories": ["Engineering", "Steam Power"]
+          },
+          "links": {
+            "self": "https://collection.sciencemuseumgroup.org.uk/objects/co67234"
+          }
+        }
+      ],
+      "meta": {
+        "total": 847,
+        "took": 42
+      },
+      "links": {
+        "first": "https://collection.sciencemuseumgroup.org.uk/search/objects?q=steam+engine&museum=SMG&images=true&page[size]=2&page[number]=0",
+        "last": "https://collection.sciencemuseumgroup.org.uk/search/objects?q=steam+engine&museum=SMG&images=true&page[size]=2&page[number]=423",
+        "next": "https://collection.sciencemuseumgroup.org.uk/search/objects?q=steam+engine&museum=SMG&images=true&page[size]=2&page[number]=1",
+        "prev": null
+      }
+    }
+  }
+}

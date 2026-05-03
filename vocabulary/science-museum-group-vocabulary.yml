@@ -1,0 +1,143 @@
+vocabulary:
+  name: Science Museum Group Vocabulary
+  description: >-
+    Domain vocabulary for the Science Museum Group Collection API covering
+    museum collections terminology, JSONAPI conventions, curatorial concepts,
+    and the science and technology subject domains of the collection.
+  created: '2026-05-02'
+  modified: '2026-05-02'
+  terms:
+    - term: Collection Object
+      definition: >-
+        A physical artifact, instrument, or item held in the Science Museum Group
+        collection. Objects are identified by co-prefixed IDs (e.g., co26704) and
+        include scientific instruments, industrial machinery, vehicles, and consumer goods.
+      tags:
+        - Collections
+        - Resources
+      example: "co26704 - Boulton & Watt rotative steam engine, 1788"
+
+    - term: Person
+      definition: >-
+        A person associated with the museum collection, including scientists, engineers,
+        inventors, craftspeople, and historical figures. Identified by cp-prefixed IDs.
+        Includes biographical data, occupations, and associated objects.
+      tags:
+        - Collections
+        - Resources
+
+    - term: Document
+      definition: >-
+        An archival item in the collection, including correspondence, drawings,
+        specifications, photographs, and written records. Identified by cd-prefixed IDs.
+      tags:
+        - Collections
+        - Resources
+
+    - term: JSONAPI
+      definition: >-
+        A specification for building APIs in JSON that standardizes resource relationships,
+        pagination, filtering, and error handling. The Science Museum Group Collection API
+        follows the JSONAPI specification at jsonapi.org.
+      tags:
+        - API Standard
+        - Technical
+
+    - term: Accession Number
+      definition: >-
+        A unique identifier assigned by the museum to each object when it enters the
+        collection. Used for internal tracking and provenance documentation.
+      tags:
+        - Collections
+        - Identification
+
+    - term: Maker
+      definition: >-
+        A person, company, or organization that created or manufactured a collection object.
+        Maker relationships are documented in the API as JSONAPI relationships to person records.
+      tags:
+        - Collections
+        - Provenance
+
+    - term: On Display
+      definition: >-
+        A boolean property indicating whether a collection object is currently visible
+        to the public in a gallery at one of the five museums.
+      tags:
+        - Collections
+        - Availability
+
+    - term: Museum Codes
+      definition: >-
+        Short codes identifying each of the five Science Museum Group museums:
+        SMG (Science Museum, London), NRM (National Railway Museum, York),
+        NMeM (National Science and Media Museum, Bradford), MSI (Science and Industry
+        Museum, Manchester), Locomotion (Locomotion, Shildon).
+      tags:
+        - Museums
+        - Reference
+      values:
+        - SMG: Science Museum, London
+        - NRM: National Railway Museum, York
+        - NMeM: National Science and Media Museum, Bradford
+        - MSI: Science and Industry Museum, Manchester
+        - Locomotion: Locomotion, Shildon (County Durham)
+
+    - term: Energy Hall
+      definition: >-
+        A gallery at the Science Museum London housing major steam engines and power
+        machinery, including the Boulton & Watt rotative steam engine (1788).
+      tags:
+        - Galleries
+        - Locations
+
+    - term: Relevance Scoring
+      definition: >-
+        The API's search results include relevance scores based on how well each item
+        matches the search query, enabling ranked result sets.
+      tags:
+        - Search
+        - Technical
+
+    - term: Pagination
+      definition: >-
+        The JSONAPI-standard pagination model used by the Collection API, using
+        zero-indexed page[number] and page[size] parameters with first/last/prev/next links.
+      tags:
+        - Technical
+        - API
+
+    - term: Filter Aggregation
+      definition: >-
+        Aggregated counts of available filter values returned alongside search results,
+        enabling faceted browsing of the collection (e.g., showing how many objects
+        per museum, category, or time period match a query).
+      tags:
+        - Search
+        - Technical
+
+    - term: Open Government License
+      definition: >-
+        The license under which the Science Museum Group's collection data is made
+        available, permitting free reuse with attribution. Image licenses may vary.
+      abbreviation: OGL
+      tags:
+        - Licensing
+        - Open Data
+
+    - term: Industrial Revolution
+      definition: >-
+        The period of major industrialization and technological change (approximately
+        1760-1840) that is a core subject area of the Science Museum collection,
+        represented by steam engines, textile machinery, and early manufacturing equipment.
+      tags:
+        - Subject Domain
+        - History
+
+    - term: Coimages
+      definition: >-
+        The Science Museum Group's image delivery infrastructure at coimages.sciencemuseumgroup.org.uk,
+        serving collection images in multiple sizes (large, medium, thumbnail).
+      tags:
+        - Technical
+        - Media

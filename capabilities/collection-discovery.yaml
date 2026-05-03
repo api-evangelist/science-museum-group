@@ -1,0 +1,264 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Science Museum Group Collection Discovery"
+  description: >-
+    Unified capability for exploring and discovering artifacts, people, and
+    documents in the Science Museum Group's collection across five UK museums.
+    Enables researchers, educators, developers, and cultural heritage professionals
+    to search, browse, and retrieve detailed records from over 7 million items
+    in the world's leading science and technology museum collection.
+  tags:
+    - Museums
+    - Collections
+    - Cultural Heritage
+    - Open Data
+    - Science
+    - History
+    - Research
+    - Education
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+capability:
+  consumes:
+    - import: smg-collection
+      location: ./shared/collection-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: smg-discovery-api
+      description: "Unified REST API for Science Museum Group collection discovery."
+      resources:
+        - path: /v1/search
+          name: search-all
+          description: "Search all collection types simultaneously"
+          operations:
+            - method: GET
+              name: search-all-collection
+              description: "Full-text search across objects, people, and documents"
+              call: "smg-collection.search-all-collection"
+              with:
+                q: "rest.q"
+                places: "rest.places"
+                images: "rest.images"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/objects
+          name: objects
+          description: "Browse and search collection objects"
+          operations:
+            - method: GET
+              name: search-objects
+              description: "Search physical artifacts with museum, category, and date filters"
+              call: "smg-collection.search-objects"
+              with:
+                q: "rest.q"
+                type: "rest.type"
+                makers: "rest.makers"
+                museum: "rest.museum"
+                categories: "rest.categories"
+                on_display: "rest.on_display"
+                images: "rest.images"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/objects/{id}
+          name: object-detail
+          description: "Retrieve full object record"
+          operations:
+            - method: GET
+              name: get-object
+              description: "Retrieve a single object with all metadata, images, and relationships"
+              call: "smg-collection.get-object"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/people
+          name: people
+          description: "Browse and search collection people"
+          operations:
+            - method: GET
+              name: search-people
+              description: "Search for scientists, engineers, and historical figures"
+              call: "smg-collection.search-people"
+              with:
+                q: "rest.q"
+                occupation: "rest.occupation"
+                places: "rest.places"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/people/{id}
+          name: person-detail
+          description: "Retrieve full person record"
+          operations:
+            - method: GET
+              name: get-person
+              description: "Retrieve a single person with biographical data"
+              call: "smg-collection.get-person"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/documents
+          name: documents
+          description: "Browse and search collection documents"
+          operations:
+            - method: GET
+              name: search-documents
+              description: "Search for documents and archive materials"
+              call: "smg-collection.search-documents"
+              with:
+                q: "rest.q"
+                makers: "rest.makers"
+                archive: "rest.archive"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/documents/{id}
+          name: document-detail
+          description: "Retrieve full document record"
+          operations:
+            - method: GET
+              name: get-document
+              description: "Retrieve a single document with metadata and archive location"
+              call: "smg-collection.get-document"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: smg-discovery-mcp
+      transport: http
+      description: "MCP server for AI-assisted Science Museum Group collection research and discovery."
+      tools:
+        - name: search-collection
+          description: >-
+            Search the Science Museum Group's collection of 7 million items including
+            scientific instruments, industrial machinery, railway artifacts, and cultural
+            objects. Returns matching items with images and metadata.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "smg-collection.search-all-collection"
+          with:
+            q: "tools.q"
+            places: "tools.places"
+            images: "tools.images"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-objects
+          description: >-
+            Search specifically for physical objects and artifacts in the Science Museum
+            Group collection. Filter by museum (Science Museum London, National Railway
+            Museum York, Science and Industry Museum Manchester, etc.), category, maker,
+            date range, and display status.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "smg-collection.search-objects"
+          with:
+            q: "tools.q"
+            type: "tools.type"
+            makers: "tools.makers"
+            museum: "tools.museum"
+            categories: "tools.categories"
+            on_display: "tools.on_display"
+            images: "tools.images"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-object
+          description: >-
+            Retrieve the complete record for a specific collection object by its ID.
+            Returns full metadata including description, date, dimensions, maker,
+            location, and high-resolution image references.
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "smg-collection.get-object"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-people
+          description: >-
+            Search for scientists, engineers, inventors, and historical figures associated
+            with the Science Museum Group collection. Filter by occupation, birth place,
+            and date of birth/death.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "smg-collection.search-people"
+          with:
+            q: "tools.q"
+            occupation: "tools.occupation"
+            birth_place: "tools.birth_place"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-person
+          description: >-
+            Retrieve the complete record for a specific person in the collection,
+            including biographical information, associated objects, and image references.
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "smg-collection.get-person"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-documents
+          description: >-
+            Search for documents, correspondence, drawings, and archival materials in
+            the Science Museum Group collection. Filter by creator, associated people,
+            archive reference, and date range.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "smg-collection.search-documents"
+          with:
+            q: "tools.q"
+            makers: "tools.makers"
+            archive: "tools.archive"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-document
+          description: >-
+            Retrieve the complete record for a specific document in the collection,
+            including metadata, archive location, and image scans if available.
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "smg-collection.get-document"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."

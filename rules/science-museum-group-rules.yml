@@ -1,0 +1,129 @@
+extends: spectral:oas
+rules:
+  # Science Museum Group Collection API Conventions
+
+  # Enforce JSONAPI content type for all responses
+  smg-jsonapi-content-type:
+    description: Science Museum Group API responses must use the JSONAPI content type application/vnd.api+json
+    message: Response content type must be application/vnd.api+json for JSONAPI compliance
+    severity: warn
+    given: $.paths.*.*.responses.*.content
+    then:
+      field: "@key"
+      function: enumeration
+      functionOptions:
+        values:
+          - application/vnd.api+json
+
+  # Enforce pagination parameters on search endpoints
+  smg-search-requires-pagination:
+    description: All search endpoints must support page[number] and page[size] parameters
+    message: Search endpoints should include pagination parameters (page[number], page[size])
+    severity: warn
+    given: $.paths[?(@property.startsWith('/search'))].get.parameters[*].name
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - q
+          - random
+          - page[number]
+          - page[size]
+          - date[from]
+          - date[to]
+          - places
+          - images
+          - type
+          - makers
+          - people
+          - categories
+          - museum
+          - on_display
+          - location
+          - birth[place]
+          - birth[date]
+          - death[date]
+          - occupation
+          - archive
+
+  # Enforce operation IDs follow camelCase convention
+  smg-operation-id-camel-case:
+    description: Operation IDs must use camelCase naming
+    message: Operation ID {{value}} must use camelCase
+    severity: warn
+    given: $.paths.*.*.operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  # Enforce all paths use kebab-case
+  smg-path-kebab-case:
+    description: API paths must use kebab-case
+    message: Path {{value}} must use kebab-case (lowercase letters and hyphens only)
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(\\/[a-z0-9-{}]+)+$"
+
+  # Require description on all operations
+  smg-operation-description-required:
+    description: All API operations must have a description
+    message: Operation at {{path}} is missing a description
+    severity: warn
+    given: $.paths.*.*
+    then:
+      field: description
+      function: truthy
+
+  # Require tags on all operations
+  smg-operation-tags-required:
+    description: All API operations must be tagged
+    message: Operation at {{path}} is missing tags
+    severity: warn
+    given: $.paths.*.*
+    then:
+      field: tags
+      function: truthy
+
+  # Enforce path parameters are referenced in the path
+  smg-path-params-used:
+    description: Path parameters declared in parameters must appear in the path
+    message: Parameter {{value}} declared as path parameter but not found in path
+    severity: error
+    given: $.paths.*.*.parameters[?(@.in == 'path')].name
+    then:
+      function: defined
+
+  # Enforce 404 response for GET single resource endpoints
+  smg-single-resource-has-404:
+    description: Endpoints that retrieve a single resource by ID must define a 404 response
+    message: Single-resource GET endpoint at {{path}} must include a 404 response
+    severity: warn
+    given: $.paths.*[?(@property == 'get')].responses
+    then:
+      field: "404"
+      function: defined
+
+  # Require OpenAPI version 3.x
+  smg-openapi-version:
+    description: APIs must use OpenAPI 3.x specification
+    message: API spec must use OpenAPI version 3.x
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # Require server URL definition
+  smg-servers-required:
+    description: API specification must define at least one server URL
+    message: API spec must include servers definition
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy

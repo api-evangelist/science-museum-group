@@ -1,0 +1,115 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "smg": "https://collection.sciencemuseumgroup.org.uk/",
+    "jsonapi": "https://jsonapi.org/format/#",
+
+    "CollectionObject": "schema:CreativeWork",
+    "CollectionPerson": "schema:Person",
+    "CollectionDocument": "schema:DigitalDocument",
+    "Museum": "schema:Museum",
+
+    "objectId": {
+      "@id": "smg:objects",
+      "@type": "@id"
+    },
+    "personId": {
+      "@id": "smg:people",
+      "@type": "@id"
+    },
+    "documentId": {
+      "@id": "smg:documents",
+      "@type": "@id"
+    },
+
+    "name": "schema:name",
+    "summary": "schema:description",
+    "description": "schema:description",
+    "on_display": "schema:availability",
+    "categories": "schema:keywords",
+    "places": "schema:spatialCoverage",
+    "accession_number": "schema:identifier",
+
+    "date": {
+      "@id": "schema:temporalCoverage"
+    },
+    "dateFrom": {
+      "@id": "schema:startDate",
+      "@type": "schema:Date"
+    },
+    "dateTo": {
+      "@id": "schema:endDate",
+      "@type": "schema:Date"
+    },
+
+    "images": "schema:image",
+    "imageUrl": {
+      "@id": "schema:contentUrl",
+      "@type": "@id"
+    },
+    "imageWidth": "schema:width",
+    "imageHeight": "schema:height",
+    "copyright": "schema:copyrightNotice",
+    "license": {
+      "@id": "schema:license",
+      "@type": "@id"
+    },
+
+    "museums": {
+      "@id": "schema:holdingArchive",
+      "@type": "@id"
+    },
+    "location": "schema:locationCreated",
+    "gallery": "schema:containedInPlace",
+
+    "makers": {
+      "@id": "schema:creator",
+      "@type": "@id"
+    },
+    "people": {
+      "@id": "schema:contributor",
+      "@type": "@id"
+    },
+    "documents": {
+      "@id": "schema:associatedMedia",
+      "@type": "@id"
+    },
+
+    "occupation": "schema:hasOccupation",
+    "birthPlace": {
+      "@id": "schema:birthPlace",
+      "@type": "@id"
+    },
+    "birthDate": {
+      "@id": "schema:birthDate",
+      "@type": "schema:Date"
+    },
+    "deathDate": {
+      "@id": "schema:deathDate",
+      "@type": "schema:Date"
+    },
+
+    "ScienceMuseum": {
+      "@id": "smg:SMG",
+      "@type": "schema:Museum"
+    },
+    "NationalRailwayMuseum": {
+      "@id": "smg:NRM",
+      "@type": "schema:Museum"
+    },
+    "ScienceAndIndustryMuseum": {
+      "@id": "smg:MSI",
+      "@type": "schema:Museum"
+    },
+    "NationalScienceAndMediaMuseum": {
+      "@id": "smg:NMeM",
+      "@type": "schema:Museum"
+    },
+
+    "searchEndpoint": "schema:SearchAction",
+    "searchQuery": "schema:query",
+    "totalResults": "schema:numberOfItems",
+    "pageNumber": "schema:pageNumber",
+    "pageSize": "schema:pageSize"
+  }
+}

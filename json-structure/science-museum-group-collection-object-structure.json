@@ -1,0 +1,152 @@
+{
+  "title": "Science Museum Group Collection Object Structure",
+  "description": "Structural documentation for the Science Museum Group Collection API JSONAPI object resource",
+  "baseUrl": "https://collection.sciencemuseumgroup.org.uk",
+  "endpoints": [
+    {
+      "path": "/search/objects",
+      "method": "GET",
+      "description": "Search collection objects"
+    },
+    {
+      "path": "/objects/{id}",
+      "method": "GET",
+      "description": "Get single object by ID"
+    }
+  ],
+  "structure": {
+    "type": "object",
+    "fields": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "Collection object ID (co-prefixed)",
+        "example": "co26704"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": true,
+        "description": "JSONAPI resource type: 'objects'",
+        "example": "objects"
+      },
+      {
+        "name": "attributes",
+        "type": "object",
+        "required": true,
+        "description": "Object attributes",
+        "fields": [
+          {
+            "name": "name",
+            "type": "object",
+            "required": true,
+            "description": "Object name information",
+            "fields": [
+              {"name": "value", "type": "string", "required": true, "description": "Primary name"},
+              {"name": "suffix", "type": "string", "required": false, "description": "Date or qualifier suffix"},
+              {"name": "full", "type": "string", "required": false, "description": "Full display name"}
+            ]
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "required": false,
+            "description": "Brief description"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Detailed curatorial description"
+          },
+          {
+            "name": "date",
+            "type": "object",
+            "required": false,
+            "description": "Date range information",
+            "fields": [
+              {"name": "from", "type": "integer", "description": "Earliest year"},
+              {"name": "to", "type": "integer", "description": "Latest year"},
+              {"name": "display", "type": "string", "description": "Human-readable date"},
+              {"name": "note", "type": "string", "description": "Date context note"}
+            ]
+          },
+          {
+            "name": "images",
+            "type": "object",
+            "required": false,
+            "description": "Image references",
+            "fields": [
+              {
+                "name": "primary",
+                "type": "object",
+                "description": "Primary image",
+                "fields": [
+                  {
+                    "name": "processed",
+                    "type": "object",
+                    "fields": [
+                      {"name": "large", "type": "object", "fields": [{"name": "location", "type": "string (uri)"}, {"name": "width", "type": "integer"}, {"name": "height", "type": "integer"}]},
+                      {"name": "medium", "type": "object", "fields": [{"name": "location", "type": "string (uri)"}, {"name": "width", "type": "integer"}, {"name": "height", "type": "integer"}]},
+                      {"name": "thumbnail", "type": "object", "fields": [{"name": "location", "type": "string (uri)"}, {"name": "width", "type": "integer"}, {"name": "height", "type": "integer"}]}
+                    ]
+                  },
+                  {"name": "copyright", "type": "string"},
+                  {"name": "license", "type": "string"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "museums",
+            "type": "array<string>",
+            "description": "Museum codes: SMG, NRM, NMeM, MSI, Locomotion"
+          },
+          {
+            "name": "on_display",
+            "type": "boolean",
+            "description": "Whether currently on public display"
+          },
+          {
+            "name": "location",
+            "type": "object",
+            "fields": [
+              {"name": "gallery", "type": "string"},
+              {"name": "floor", "type": "string"},
+              {"name": "museum", "type": "string"},
+              {"name": "museum_code", "type": "string"}
+            ]
+          },
+          {
+            "name": "categories",
+            "type": "array<string>",
+            "description": "Collection categories"
+          },
+          {
+            "name": "places",
+            "type": "array<string>",
+            "description": "Geographical associations"
+          }
+        ]
+      },
+      {
+        "name": "relationships",
+        "type": "object",
+        "description": "Related resources",
+        "fields": [
+          {"name": "makers", "type": "object", "description": "JSONAPI relationship to person resources"},
+          {"name": "people", "type": "object", "description": "JSONAPI relationship to person resources"},
+          {"name": "documents", "type": "object", "description": "JSONAPI relationship to document resources"}
+        ]
+      },
+      {
+        "name": "links",
+        "type": "object",
+        "fields": [
+          {"name": "self", "type": "string (uri)", "description": "Canonical URL for this object"}
+        ]
+      }
+    ]
+  }
+}
