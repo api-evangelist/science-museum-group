@@ -44,7 +44,7 @@ apis:
         url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/openapi/science-museum-group-collection-openapi.yml
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/TheScienceMuseum/collectionsonline-api
       - type: SpectralRules
         url: https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
@@ -57,7 +57,7 @@ apis:
       - type: Vocabulary
         url: https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/TheScienceMuseum
   - type: Website
     url: https://www.sciencemuseumgroup.org.uk/
