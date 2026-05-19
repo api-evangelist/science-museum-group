@@ -1,0 +1,421 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Science Museum Group Collection API — Search
+  description: 'Science Museum Group Collection API — Search. 4 operations. Lead operation: Search All Collection Types. Self-contained
+    Naftiko capability covering one Science Museum Group business surface.'
+  tags:
+  - Science Museum Group
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SCIENCE_MUSEUM_GROUP_API_KEY: SCIENCE_MUSEUM_GROUP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: collection-search
+    baseUri: https://collection.sciencemuseumgroup.org.uk
+    description: Science Museum Group Collection API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: search
+      path: /search
+      operations:
+      - name: searchall
+        method: GET
+        description: Search All Collection Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Full-text search query term
+        - name: random
+          in: query
+          type: integer
+          description: Return N random records from the collection
+        - name: page[number]
+          in: query
+          type: integer
+          description: Zero-indexed page number for pagination
+        - name: page[size]
+          in: query
+          type: integer
+          description: Number of results per page (max 100)
+        - name: date[from]
+          in: query
+          type: string
+          description: Filter results from this date (year, year-month, or full date)
+        - name: date[to]
+          in: query
+          type: string
+          description: Filter results up to this date (year, year-month, or full date)
+        - name: places
+          in: query
+          type: string
+          description: Filter by geographical association
+        - name: images
+          in: query
+          type: boolean
+          description: Filter to only items with available images
+    - name: search-documents
+      path: /search/documents
+      operations:
+      - name: searchdocuments
+        method: GET
+        description: Search Collection Documents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Full-text search query term
+        - name: makers
+          in: query
+          type: string
+          description: Filter by document creator or maker
+        - name: people
+          in: query
+          type: string
+          description: Filter by associated person
+        - name: archive
+          in: query
+          type: string
+          description: Filter by archive reference
+        - name: places
+          in: query
+          type: string
+          description: Filter by geographical association
+        - name: date[from]
+          in: query
+          type: string
+          description: Filter from date
+        - name: date[to]
+          in: query
+          type: string
+          description: Filter to date
+        - name: images
+          in: query
+          type: boolean
+          description: Filter to documents with available images
+        - name: page[number]
+          in: query
+          type: integer
+          description: Zero-indexed page number
+        - name: page[size]
+          in: query
+          type: integer
+          description: Results per page (max 100)
+    - name: search-objects
+      path: /search/objects
+      operations:
+      - name: searchobjects
+        method: GET
+        description: Search Collection Objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Full-text search query term
+        - name: type
+          in: query
+          type: string
+          description: Filter by object type
+        - name: makers
+          in: query
+          type: string
+          description: Filter by maker or manufacturer name
+        - name: people
+          in: query
+          type: string
+          description: Filter by associated person
+        - name: categories
+          in: query
+          type: string
+          description: Filter by collection category
+        - name: museum
+          in: query
+          type: string
+          description: Filter by museum code (NRM, SMG, NMeM, MSI)
+        - name: on_display
+          in: query
+          type: boolean
+          description: Filter to objects currently on display
+        - name: location
+          in: query
+          type: string
+          description: Filter by gallery or storage location
+        - name: images
+          in: query
+          type: boolean
+          description: Filter to objects with available images
+        - name: places
+          in: query
+          type: string
+          description: Filter by geographical association
+        - name: date[from]
+          in: query
+          type: string
+          description: Filter from date
+        - name: date[to]
+          in: query
+          type: string
+          description: Filter to date
+        - name: page[number]
+          in: query
+          type: integer
+          description: Zero-indexed page number
+        - name: page[size]
+          in: query
+          type: integer
+          description: Results per page (max 100)
+    - name: search-people
+      path: /search/people
+      operations:
+      - name: searchpeople
+        method: GET
+        description: Search Collection People
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Full-text search query term
+        - name: birth[place]
+          in: query
+          type: string
+          description: Filter by birth place
+        - name: birth[date]
+          in: query
+          type: string
+          description: Filter by birth date (year or year-month)
+        - name: death[date]
+          in: query
+          type: string
+          description: Filter by death date (year or year-month)
+        - name: occupation
+          in: query
+          type: string
+          description: Filter by occupation or profession
+        - name: places
+          in: query
+          type: string
+          description: Filter by geographical association
+        - name: images
+          in: query
+          type: boolean
+          description: Filter to people with available images
+        - name: page[number]
+          in: query
+          type: integer
+          description: Zero-indexed page number
+        - name: page[size]
+          in: query
+          type: integer
+          description: Results per page (max 100)
+  exposes:
+  - type: rest
+    namespace: collection-search-rest
+    port: 8080
+    description: REST adapter for Science Museum Group Collection API — Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/search
+      name: search
+      description: REST surface for search.
+      operations:
+      - method: GET
+        name: searchall
+        description: Search All Collection Types
+        call: collection-search.searchall
+        with:
+          q: rest.q
+          random: rest.random
+          page[number]: rest.page[number]
+          page[size]: rest.page[size]
+          date[from]: rest.date[from]
+          date[to]: rest.date[to]
+          places: rest.places
+          images: rest.images
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search/documents
+      name: search-documents
+      description: REST surface for search-documents.
+      operations:
+      - method: GET
+        name: searchdocuments
+        description: Search Collection Documents
+        call: collection-search.searchdocuments
+        with:
+          q: rest.q
+          makers: rest.makers
+          people: rest.people
+          archive: rest.archive
+          places: rest.places
+          date[from]: rest.date[from]
+          date[to]: rest.date[to]
+          images: rest.images
+          page[number]: rest.page[number]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search/objects
+      name: search-objects
+      description: REST surface for search-objects.
+      operations:
+      - method: GET
+        name: searchobjects
+        description: Search Collection Objects
+        call: collection-search.searchobjects
+        with:
+          q: rest.q
+          type: rest.type
+          makers: rest.makers
+          people: rest.people
+          categories: rest.categories
+          museum: rest.museum
+          on_display: rest.on_display
+          location: rest.location
+          images: rest.images
+          places: rest.places
+          date[from]: rest.date[from]
+          date[to]: rest.date[to]
+          page[number]: rest.page[number]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search/people
+      name: search-people
+      description: REST surface for search-people.
+      operations:
+      - method: GET
+        name: searchpeople
+        description: Search Collection People
+        call: collection-search.searchpeople
+        with:
+          q: rest.q
+          birth[place]: rest.birth[place]
+          birth[date]: rest.birth[date]
+          death[date]: rest.death[date]
+          occupation: rest.occupation
+          places: rest.places
+          images: rest.images
+          page[number]: rest.page[number]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: collection-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Science Museum Group Collection API — Search. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-all-collection-types
+      description: Search All Collection Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: collection-search.searchall
+      with:
+        q: tools.q
+        random: tools.random
+        page[number]: tools.page[number]
+        page[size]: tools.page[size]
+        date[from]: tools.date[from]
+        date[to]: tools.date[to]
+        places: tools.places
+        images: tools.images
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-collection-documents
+      description: Search Collection Documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: collection-search.searchdocuments
+      with:
+        q: tools.q
+        makers: tools.makers
+        people: tools.people
+        archive: tools.archive
+        places: tools.places
+        date[from]: tools.date[from]
+        date[to]: tools.date[to]
+        images: tools.images
+        page[number]: tools.page[number]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-collection-objects
+      description: Search Collection Objects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: collection-search.searchobjects
+      with:
+        q: tools.q
+        type: tools.type
+        makers: tools.makers
+        people: tools.people
+        categories: tools.categories
+        museum: tools.museum
+        on_display: tools.on_display
+        location: tools.location
+        images: tools.images
+        places: tools.places
+        date[from]: tools.date[from]
+        date[to]: tools.date[to]
+        page[number]: tools.page[number]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-collection-people
+      description: Search Collection People
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: collection-search.searchpeople
+      with:
+        q: tools.q
+        birth[place]: tools.birth[place]
+        birth[date]: tools.birth[date]
+        death[date]: tools.death[date]
+        occupation: tools.occupation
+        places: tools.places
+        images: tools.images
+        page[number]: tools.page[number]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
