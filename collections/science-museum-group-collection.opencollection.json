@@ -1,0 +1,397 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Science Museum Group Collection API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search All Collection Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "steam engine",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "random",
+                "value": "",
+                "type": "query",
+                "description": "Return N random records from the collection"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number for pagination"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 100)"
+              },
+              {
+                "name": "date[from]",
+                "value": "1800",
+                "type": "query",
+                "description": "Filter results from this date (year, year-month, or full date)"
+              },
+              {
+                "name": "date[to]",
+                "value": "1900",
+                "type": "query",
+                "description": "Filter results up to this date (year, year-month, or full date)"
+              },
+              {
+                "name": "places",
+                "value": "France",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only items with available images"
+              }
+            ]
+          },
+          "docs": "Perform a full-text or filtered search across objects, people, and documents in the Science Museum Group collection. Returns JSONAPI-formatted results with pagination, relevance scoring, and filter aggregations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collection Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search/objects",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object type"
+              },
+              {
+                "name": "makers",
+                "value": "",
+                "type": "query",
+                "description": "Filter by maker or manufacturer name"
+              },
+              {
+                "name": "people",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated person"
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection category"
+              },
+              {
+                "name": "museum",
+                "value": "",
+                "type": "query",
+                "description": "Filter by museum code (NRM, SMG, NMeM, MSI)"
+              },
+              {
+                "name": "on_display",
+                "value": "",
+                "type": "query",
+                "description": "Filter to objects currently on display"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "Filter by gallery or storage location"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to objects with available images"
+              },
+              {
+                "name": "places",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "date[from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter from date"
+              },
+              {
+                "name": "date[to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter to date"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100)"
+              }
+            ]
+          },
+          "docs": "Search for physical objects and artifacts in the Science Museum Group collection. Supports filtering by object type, makers, people, categories, museum branch, on-display status, and location."
+        },
+        {
+          "info": {
+            "name": "Get Collection Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/objects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "co26704",
+                "type": "path",
+                "description": "Unique collection object identifier (e.g., co26704)"
+              }
+            ]
+          },
+          "docs": "Retrieve a single collection object by its unique identifier. Returns the full JSONAPI resource record including all metadata, image references, relationships to people and documents, and curatorial notes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collection People",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search/people",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "birth[place]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by birth place"
+              },
+              {
+                "name": "birth[date]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by birth date (year or year-month)"
+              },
+              {
+                "name": "death[date]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by death date (year or year-month)"
+              },
+              {
+                "name": "occupation",
+                "value": "",
+                "type": "query",
+                "description": "Filter by occupation or profession"
+              },
+              {
+                "name": "places",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to people with available images"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100)"
+              }
+            ]
+          },
+          "docs": "Search for people associated with the Science Museum Group collection, including scientists, engineers, makers, and historical figures. Supports filtering by birth place, birth date, death date, occupation, and geographical associations."
+        },
+        {
+          "info": {
+            "name": "Get Collection Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/people/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "cp22644",
+                "type": "path",
+                "description": "Unique person identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a single person record by its unique identifier. Returns the full JSONAPI resource record including biographical information, image references, and relationships to collection objects and documents."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collection Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search/documents",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "makers",
+                "value": "",
+                "type": "query",
+                "description": "Filter by document creator or maker"
+              },
+              {
+                "name": "people",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated person"
+              },
+              {
+                "name": "archive",
+                "value": "",
+                "type": "query",
+                "description": "Filter by archive reference"
+              },
+              {
+                "name": "places",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "date[from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter from date"
+              },
+              {
+                "name": "date[to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter to date"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to documents with available images"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100)"
+              }
+            ]
+          },
+          "docs": "Search for documents, archives, and written records in the Science Museum Group collection. Supports filtering by makers, associated people, and archive reference."
+        },
+        {
+          "info": {
+            "name": "Get Collection Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "cd23456",
+                "type": "path",
+                "description": "Unique document identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a single document record by its unique identifier. Returns the full JSONAPI resource record including document metadata, image references, archive location, and relationships to people and objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

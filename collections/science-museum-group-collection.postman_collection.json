@@ -1,0 +1,1717 @@
+{
+  "item": [
+    {
+      "id": "53bb4ed5-17d1-452e-bf27-6600707cc0d0",
+      "name": "Objects",
+      "description": {
+        "content": "Scientific instruments, industrial artifacts, and cultural items in the collection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a9cfc4a-7424-44ac-a9ed-61d36f12ba53",
+          "name": "Search Collection Objects",
+          "request": {
+            "name": "Search Collection Objects",
+            "description": {
+              "content": "Search for physical objects and artifacts in the Science Museum Group collection. Supports filtering by object type, makers, people, categories, museum branch, on-display status, and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by object type"
+                },
+                {
+                  "disabled": false,
+                  "key": "makers",
+                  "value": "<string>",
+                  "description": "Filter by maker or manufacturer name"
+                },
+                {
+                  "disabled": false,
+                  "key": "people",
+                  "value": "<string>",
+                  "description": "Filter by associated person"
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Filter by collection category"
+                },
+                {
+                  "disabled": false,
+                  "key": "museum",
+                  "value": "<string>",
+                  "description": "Filter by museum code (NRM, SMG, NMeM, MSI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "on_display",
+                  "value": "<boolean>",
+                  "description": "Filter to objects currently on display"
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "Filter by gallery or storage location"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to objects with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[from]",
+                  "value": "<string>",
+                  "description": "Filter from date"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[to]",
+                  "value": "<string>",
+                  "description": "Filter to date"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc5a5212-46ff-493f-8f9a-7c021aa3fd28",
+              "name": "Successful object search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "people",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "museum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "on_display",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[from]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[to]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://cUrhptcJmfNeTxj.sgdjTRhqNMg4l6wEv-DOHXtuheu,xaRa\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"people\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://fbTxiigkyhHkCqnAWbqzlIJXqkQDx.umqEoXC.n-X+YIj,3.nIKN0KmqNXRl.OhG8qJZR,gUwDKnrvdK7US6QgOiLkQeB5\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 6849\n  },\n  \"links\": {\n    \"first\": \"https://YdDhHwVxgWlHwMhamKSY.iihEkndAtdi45NpWSMW\",\n    \"last\": \"http://kllnQQaUJthCiFPJPZrofnNUIac.wmirZLXKjpp\",\n    \"prev\": \"http://sNpRoZnQcFmiC.wjJFUD9VaD.E.lzqUQXMyFrgv,YU\",\n    \"next\": \"http://xczuBZDUrnKYOvinGWjjeZux.qrpdkYfUB4OjSo.C91pNeaiq0UBWPohhof5H.9YXC0C3YX6i\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d101ee2e-f26b-4a9c-a9bd-6f81b6cdea8e",
+          "name": "Get Collection Object",
+          "request": {
+            "name": "Get Collection Object",
+            "description": {
+              "content": "Retrieve a single collection object by its unique identifier. Returns the full JSONAPI resource record including all metadata, image references, relationships to people and documents, and curatorial notes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "objects",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique collection object identifier (e.g., co26704)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da5c5504-4200-4361-8ef4-accfb306e5d7",
+              "name": "Successful object retrieval",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique collection object identifier (e.g., co26704)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"documents\",\n    \"attributes\": {\n      \"name\": {},\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"date\": {},\n      \"images\": {},\n      \"museums\": [\n        \"string\",\n        \"string\"\n      ],\n      \"on_display\": false,\n      \"location\": {}\n    },\n    \"relationships\": {\n      \"makers\": {},\n      \"people\": {},\n      \"documents\": {}\n    },\n    \"links\": {\n      \"self\": \"http://UbKnXhkdBX.nkmoQ4\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bcea57c-d097-4931-820a-df97f78d9a6a",
+              "name": "Object not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique collection object identifier (e.g., co26704)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3ed75133-f58e-4ea7-aeff-dc411aeb9a40",
+      "name": "People",
+      "description": {
+        "content": "People associated with the museum collections including makers, scientists, and historical figures",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc3456b6-d4e9-4b49-ae8b-42f996c5f276",
+          "name": "Search Collection People",
+          "request": {
+            "name": "Search Collection People",
+            "description": {
+              "content": "Search for people associated with the Science Museum Group collection, including scientists, engineers, makers, and historical figures. Supports filtering by birth place, birth date, death date, occupation, and geographical associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "birth[place]",
+                  "value": "<string>",
+                  "description": "Filter by birth place"
+                },
+                {
+                  "disabled": false,
+                  "key": "birth[date]",
+                  "value": "<string>",
+                  "description": "Filter by birth date (year or year-month)"
+                },
+                {
+                  "disabled": false,
+                  "key": "death[date]",
+                  "value": "<string>",
+                  "description": "Filter by death date (year or year-month)"
+                },
+                {
+                  "disabled": false,
+                  "key": "occupation",
+                  "value": "<string>",
+                  "description": "Filter by occupation or profession"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to people with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "834cd649-d513-4627-9ad7-979c31da2dd4",
+              "name": "Successful people search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birth[place]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birth[date]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "death[date]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "occupation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://vxgNqVlZtaeCEDbVEF.dkdqeWfg6yYRmeXuEXBgpv+N4Kky\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"people\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://OUgvGymJJQZPzeiRPtTfoLUQtNvBuBRvn.xhxyqIEc,3vnOrfZlQWk-\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 3148\n  },\n  \"links\": {\n    \"first\": \"https://qrGYjOzDwBSuJkUHWtGHckqdysdCP.aprat7\",\n    \"last\": \"https://McCQgd.sftjebRXjqFmCc.al7NWrsqHu1ZUV0KfAyu5a+64Jp\",\n    \"prev\": \"https://LjJlSpafEADQrpZozliGr.xtsTAeTBdXQDCFMfw8ERKa1DktPS.T4stzQje3e8ISRw-UbpnmJ,tCCHLvB5wdgDLeWYszc3DnuWGS\",\n    \"next\": \"http://mTPCyCBGjveVRXaVCxoUUaaGmJUUP.gubiwG0sWpgPeEeV0.r.RpZZuvGHoD9tyz8hZo.d6s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d16a71f6-5f28-4e72-b6cc-144f388430a2",
+          "name": "Get Collection Person",
+          "request": {
+            "name": "Get Collection Person",
+            "description": {
+              "content": "Retrieve a single person record by its unique identifier. Returns the full JSONAPI resource record including biographical information, image references, and relationships to collection objects and documents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique person identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a93eee3e-a841-401c-a542-68856ff82ece",
+              "name": "Successful person retrieval",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique person identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"people\",\n    \"attributes\": {\n      \"name\": {},\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"date\": {},\n      \"images\": {},\n      \"museums\": [\n        \"string\",\n        \"string\"\n      ],\n      \"on_display\": false,\n      \"location\": {}\n    },\n    \"relationships\": {\n      \"makers\": {},\n      \"people\": {},\n      \"documents\": {}\n    },\n    \"links\": {\n      \"self\": \"http://XUoDH.rkbkZ8kTJudNdJKyOal,FcxUv1XEvCpBz,uXaf9VE\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09628ef5-d41f-4c52-8d19-daa01181861e",
+              "name": "Person not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique person identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8007e3ae-ff52-4a59-b717-d9f4927e5692",
+      "name": "Documents",
+      "description": {
+        "content": "Documents, archives, and written records in the collection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3762872-edb5-46f7-a3a4-7eb537e65a8d",
+          "name": "Search Collection Documents",
+          "request": {
+            "name": "Search Collection Documents",
+            "description": {
+              "content": "Search for documents, archives, and written records in the Science Museum Group collection. Supports filtering by makers, associated people, and archive reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "makers",
+                  "value": "<string>",
+                  "description": "Filter by document creator or maker"
+                },
+                {
+                  "disabled": false,
+                  "key": "people",
+                  "value": "<string>",
+                  "description": "Filter by associated person"
+                },
+                {
+                  "disabled": false,
+                  "key": "archive",
+                  "value": "<string>",
+                  "description": "Filter by archive reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[from]",
+                  "value": "<string>",
+                  "description": "Filter from date"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[to]",
+                  "value": "<string>",
+                  "description": "Filter to date"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to documents with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8768a96-9430-4655-969a-2b27610d9365",
+              "name": "Successful document search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "people",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archive",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[from]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[to]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"people\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://IGkZsnodKzxkS.ghhlc55blit8HKM2cGn2oOGNGOYdlEbeSC0skjv.yIsHc0jX\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://XkHwRnhXgVEYVrnJEAdWnHyycxdLfb.nnrgzVymLFgSz-XYNYLFm4\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 3670\n  },\n  \"links\": {\n    \"first\": \"http://VIfQUfGOdzFr.sctSZmVTCSc\",\n    \"last\": \"http://BeFZUUWGQRFqxBRbIbBTUQAk.zknqNGjt,.\",\n    \"prev\": \"http://KXHELfugoplmDqtpfCwVZaH.kpimYhtlQQ0-Qq9Sty72C7zhrDNaDBu2sbzQ,y+jDdKGaxeT5V5Fo426lspPY6w.J4\",\n    \"next\": \"http://LJzqhvCfjuuctvwJUuM.trgklfT0K,3wWBZdma.+Hs5VVKV5mifAF\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecbcabdc-19e8-42d6-a48e-95b888d2be8d",
+          "name": "Get Collection Document",
+          "request": {
+            "name": "Get Collection Document",
+            "description": {
+              "content": "Retrieve a single document record by its unique identifier. Returns the full JSONAPI resource record including document metadata, image references, archive location, and relationships to people and objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique document identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "223187a0-c931-4244-a0d0-f2332c2d2b0a",
+              "name": "Successful document retrieval",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique document identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"documents\",\n    \"attributes\": {\n      \"name\": {},\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"date\": {},\n      \"images\": {},\n      \"museums\": [\n        \"string\",\n        \"string\"\n      ],\n      \"on_display\": true,\n      \"location\": {}\n    },\n    \"relationships\": {\n      \"makers\": {},\n      \"people\": {},\n      \"documents\": {}\n    },\n    \"links\": {\n      \"self\": \"http://XPhcCyDbbclmU.wtigY+wuh5d\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d5168c5-db5a-476e-959c-c0e991153861",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique document identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c2cb1652-0a08-473d-b72f-7cf7a3563f58",
+      "name": "Search",
+      "description": {
+        "content": "Full-text and filtered search across all collection types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5489d1fe-75f9-464c-82c3-67341681e29e",
+          "name": "Search All Collection Types",
+          "request": {
+            "name": "Search All Collection Types",
+            "description": {
+              "content": "Perform a full-text or filtered search across objects, people, and documents in the Science Museum Group collection. Returns JSONAPI-formatted results with pagination, relevance scoring, and filter aggregations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "random",
+                  "value": "<integer>",
+                  "description": "Return N random records from the collection"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Number of results per page (max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[from]",
+                  "value": "<string>",
+                  "description": "Filter results from this date (year, year-month, or full date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[to]",
+                  "value": "<string>",
+                  "description": "Filter results up to this date (year, year-month, or full date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to only items with available images"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30acd954-f616-4afa-869a-7d65a7e52d36",
+              "name": "Successful search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "steam engine"
+                    },
+                    {
+                      "key": "random",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "date[from]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[to]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "France"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"people\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://ChUJfACagOXNZLnGSRgIBgnuUcpKjRSs.fyxbZFcM.PFawfkVR9CmstaJbMNzojF7PgV-CrCMrKCLn5O.YK.B1Jjjsbu2-goBfBUpxyLKY3YpJ,\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"people\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://LiRcpiIiUAPJoD.lagzGXmOdM0Sup25\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 6244,\n    \"took\": 2630.7960686967845\n  },\n  \"links\": {\n    \"first\": \"http://PyefHzJpgSuHWseNKLSyD.dgfdgeYXWjiQjwFm\",\n    \"last\": \"https://APnAfqUiHafjqADvNTCwUkUydjcbsvY.aaychIt,91YHORm5SaAD.UWQVKoayDfbWtf0WtP\",\n    \"prev\": \"https://rNsFnWmcdtEeVb.qwmjBIwn-HqX7oAfzr3D2nFC-ICWwwt4BpsnxnE9nTLx,t53F9PkPNizNNzY4aoDCNgYm.0\",\n    \"next\": \"https://qNRjtOLHOHjPiUZGxMNOFEoxE.mnV,8dSLty7v-GQzFlpsBippynnDDBbn0oBoGgStnjpJAjcdUGr8nHFMh\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dfbb680-f877-4d32-ad67-df7b3d9cf33a",
+          "name": "Search Collection Objects",
+          "request": {
+            "name": "Search Collection Objects",
+            "description": {
+              "content": "Search for physical objects and artifacts in the Science Museum Group collection. Supports filtering by object type, makers, people, categories, museum branch, on-display status, and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by object type"
+                },
+                {
+                  "disabled": false,
+                  "key": "makers",
+                  "value": "<string>",
+                  "description": "Filter by maker or manufacturer name"
+                },
+                {
+                  "disabled": false,
+                  "key": "people",
+                  "value": "<string>",
+                  "description": "Filter by associated person"
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Filter by collection category"
+                },
+                {
+                  "disabled": false,
+                  "key": "museum",
+                  "value": "<string>",
+                  "description": "Filter by museum code (NRM, SMG, NMeM, MSI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "on_display",
+                  "value": "<boolean>",
+                  "description": "Filter to objects currently on display"
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "Filter by gallery or storage location"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to objects with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[from]",
+                  "value": "<string>",
+                  "description": "Filter from date"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[to]",
+                  "value": "<string>",
+                  "description": "Filter to date"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65e915ef-84cd-4b41-a8a3-b490184a3890",
+              "name": "Successful object search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "people",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "museum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "on_display",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[from]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[to]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"objects\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://Vv.iwIQ-2QGJmtDVbbnJW1y.VweMaJifk-N+CT.PwB-F6TE-06\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://ViZZQRdtFGdKiwMYknNYHWV.ctepZKnH-ih.FpVAktgBCm.\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 884\n  },\n  \"links\": {\n    \"first\": \"http://CJUshFIeQKXclsOwNPbMmGcQpRexinom.anscWg-WAbEYP4TgH4KvBa8vSokTZTpgDqGDwfX6Z\",\n    \"last\": \"http://AdCCeVN.fiyljywE\",\n    \"prev\": \"https://FRYJBSujPppLXlVuqhBMeRTLt.nncnTK9qq30XV4DJzpejp+,l,6wW6V\",\n    \"next\": \"http://drJCrwocXUI.wljJFJhJYoWnLSVsL0VrcRF.KJJ85+nFAqoJU22C3QwRCjOPfNS.gQ8Jbpk\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "848d4409-f72a-4d5a-a31d-134dd30a7479",
+          "name": "Search Collection People",
+          "request": {
+            "name": "Search Collection People",
+            "description": {
+              "content": "Search for people associated with the Science Museum Group collection, including scientists, engineers, makers, and historical figures. Supports filtering by birth place, birth date, death date, occupation, and geographical associations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "birth[place]",
+                  "value": "<string>",
+                  "description": "Filter by birth place"
+                },
+                {
+                  "disabled": false,
+                  "key": "birth[date]",
+                  "value": "<string>",
+                  "description": "Filter by birth date (year or year-month)"
+                },
+                {
+                  "disabled": false,
+                  "key": "death[date]",
+                  "value": "<string>",
+                  "description": "Filter by death date (year or year-month)"
+                },
+                {
+                  "disabled": false,
+                  "key": "occupation",
+                  "value": "<string>",
+                  "description": "Filter by occupation or profession"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to people with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "320f6fd5-3a6d-4d83-aef0-df727c8369fe",
+              "name": "Successful people search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birth[place]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birth[date]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "death[date]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "occupation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://UHAwtGWeKNFzrpTiYJxGamLIx.ycEkjUcLBUSNd,A5Yw0,-oK5Ac+F0h0eAGx3z3HY96rpkXsvCe,d\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://uZXAVQMddixzMNL.vngmEWqbzqsmwcMSb-QNSdVAxEg9PsnrXfNvcYLQY6fj-Mc4uwFl19hnijC40\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 8032\n  },\n  \"links\": {\n    \"first\": \"https://XGulRqiAphpCcsHGFXxaU.gedzHAKnUP8eP\",\n    \"last\": \"http://VlGVPTIXKDYbdBQSrlnNjWLJs.bvs6IRV-Zi4l37v\",\n    \"prev\": \"http://TqooPQRGhWdoZlGNhCdXM.bctaaUYF.AamS+LvELYeGhVJD6UJKXRLuXCQg\",\n    \"next\": \"http://EVmCToXkfknKYdywJw.cngsp11qJw7Hq.Zmu4sCz0pBanb4mDYtekkBpDUvwzPBFuHOTR\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0a24ae4-0934-4837-bac1-a71dce11e0f0",
+          "name": "Search Collection Documents",
+          "request": {
+            "name": "Search Collection Documents",
+            "description": {
+              "content": "Search for documents, archives, and written records in the Science Museum Group collection. Supports filtering by makers, associated people, and archive reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query term"
+                },
+                {
+                  "disabled": false,
+                  "key": "makers",
+                  "value": "<string>",
+                  "description": "Filter by document creator or maker"
+                },
+                {
+                  "disabled": false,
+                  "key": "people",
+                  "value": "<string>",
+                  "description": "Filter by associated person"
+                },
+                {
+                  "disabled": false,
+                  "key": "archive",
+                  "value": "<string>",
+                  "description": "Filter by archive reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "places",
+                  "value": "<string>",
+                  "description": "Filter by geographical association"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[from]",
+                  "value": "<string>",
+                  "description": "Filter from date"
+                },
+                {
+                  "disabled": false,
+                  "key": "date[to]",
+                  "value": "<string>",
+                  "description": "Filter to date"
+                },
+                {
+                  "disabled": false,
+                  "key": "images",
+                  "value": "<boolean>",
+                  "description": "Filter to documents with available images"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "0",
+                  "description": "Zero-indexed page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "Results per page (max 100)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "252301df-8e73-491d-91f9-d1ddbd822f34",
+              "name": "Successful document search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "people",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archive",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "places",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[from]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date[to]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "0"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"documents\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": false,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"https://mKKMJPbggyno.rvoviX4-mgYXLMWwASTM+Xxyn8el7NW99ZI\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"objects\",\n      \"attributes\": {\n        \"name\": {},\n        \"summary\": \"string\",\n        \"description\": \"string\",\n        \"date\": {},\n        \"images\": {},\n        \"museums\": [\n          \"string\",\n          \"string\"\n        ],\n        \"on_display\": true,\n        \"location\": {}\n      },\n      \"relationships\": {\n        \"makers\": {},\n        \"people\": {},\n        \"documents\": {}\n      },\n      \"links\": {\n        \"self\": \"http://jyurtrAbqreW.elMpYUWc5kTQMegHmFsSyUXoWtPsguNo1.\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"total\": 7232\n  },\n  \"links\": {\n    \"first\": \"http://LdUyEwxyCCYyyWdMzIlqyVdnAD.kbbJI8Elpy8l,BMKHwwJ+DDUUYw0kv1JAC-\",\n    \"last\": \"http://MnjQevvdbksDOJiEsohSUnrCdSDLel.wkK.WTpZm-I6H+Z2SpnaipRuDQ8HbihLBngUhRVc95NxCrF9On-5UCely7,wm4Uolr3A2kgQ3R5\",\n    \"prev\": \"https://NVNazmBt.jfnnH6J9.lzMnZMXBhPMe9MT74h\",\n    \"next\": \"http://oJvLtgu.calvvVW58C,ZNoWSg+4-asrzJKidFI9AY6xeZCTIs5uODBTSG+l\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://collection.sciencemuseumgroup.org.uk",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6f3332b-4391-48dd-b4fb-02824d1738b8",
+    "name": "Science Museum Group Collection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A JSONAPI-compliant REST API providing open access to the Science Museum Group's collection of over 7 million objects, people, and documents across five UK museums: the Science Museum (London), the Science and Industry Museum (Manchester), the National Railway Museum (York), the National Science and Media Museum (Bradford), and Locomotion (Shildon). The API supports full-text search, filtering, and individual record retrieval with rich metadata, image references, and curatorial annotations.\n\nContact Support:\n Name: Science Museum Group Collections",
+      "type": "text/plain"
+    }
+  }
+}
