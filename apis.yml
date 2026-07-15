@@ -57,6 +57,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/science-museum-group-agentic-access.yml
   - type: DomainSecurity
     url: security/science-museum-group-domain-security.yml
   - type: LinkedIn
