@@ -1,4 +1,17 @@
 aid: science-museum-group
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/science-museum-group.png
 name: Science Museum Group
 description: >-
   The Science Museum Group operates five UK science and technology museums: the Science Museum (London), the Science and
@@ -20,42 +33,111 @@ tags:
   - Technology
   - United Kingdom
 apis:
-  - aid: science-museum-group:collection-api
-    name: Science Museum Group Collection API
-    description: >-
-      A JSONAPI-compliant REST API providing open access to the Science Museum Group's collection of over 7 million
-      objects, people, and documents across its five UK museums. Search and retrieve data about scientific instruments,
-      industrial artifacts, railway objects, and cultural items with image access, pagination, and rich filtering by
-      date, place, maker, museum, and category.
-    humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
-    baseURL: https://collection.sciencemuseumgroup.org.uk
-    tags:
-      - Collections
-      - Museums
-      - Open Data
-      - Cultural Heritage
-      - Science
-      - JSONAPI
-    properties:
-      - type: Documentation
-        url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/openapi/science-museum-group-collection-openapi.yml
-      - type: GitHubRepository
-        url: https://github.com/TheScienceMuseum/collectionsonline-api
-      - type: SpectralRules
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-schema/science-museum-group-collection-object-schema.json
-      - type: JSONLDContext
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-ld/science-museum-group-context.jsonld
-      - type: Vocabulary
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
+- aid: science-museum-group:science-museum-group-documents-api
+  name: Science Museum Group Documents API
+  description: Documents, archives, and written records in the collection
+  humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  baseURL: https://collection.sciencemuseumgroup.org.uk
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/science-museum-group-documents-api-openapi.yml
+  - type: Documentation
+    url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  - type: GitHubRepository
+    url: https://github.com/TheScienceMuseum/collectionsonline-api
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-schema/science-museum-group-collection-object-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-ld/science-museum-group-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
+- aid: science-museum-group:science-museum-group-objects-api
+  name: Science Museum Group Objects API
+  description: Scientific instruments, industrial artifacts, and cultural items in the collection
+  humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  baseURL: https://collection.sciencemuseumgroup.org.uk
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/science-museum-group-objects-api-openapi.yml
+  - type: Documentation
+    url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  - type: GitHubRepository
+    url: https://github.com/TheScienceMuseum/collectionsonline-api
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-schema/science-museum-group-collection-object-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-ld/science-museum-group-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
+- aid: science-museum-group:science-museum-group-people-api
+  name: Science Museum Group People API
+  description: >-
+    People associated with the museum collections including makers, scientists, and historical figures
+  humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  baseURL: https://collection.sciencemuseumgroup.org.uk
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/science-museum-group-people-api-openapi.yml
+  - type: Documentation
+    url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  - type: GitHubRepository
+    url: https://github.com/TheScienceMuseum/collectionsonline-api
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-schema/science-museum-group-collection-object-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-ld/science-museum-group-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
+- aid: science-museum-group:science-museum-group-search-api
+  name: Science Museum Group Search API
+  description: Full-text and filtered search across all collection types
+  humanURL: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  baseURL: https://collection.sciencemuseumgroup.org.uk
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/science-museum-group-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  - type: GitHubRepository
+    url: https://github.com/TheScienceMuseum/collectionsonline-api
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/rules/science-museum-group-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-schema/science-museum-group-collection-object-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/json-ld/science-museum-group-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
   - type: AgenticAccess
     url: agentic-access/science-museum-group-agentic-access.yml
