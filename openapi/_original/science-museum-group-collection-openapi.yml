@@ -1,0 +1,662 @@
+openapi: 3.1.0
+info:
+  title: Science Museum Group Collection API
+  description: >-
+    A JSONAPI-compliant REST API providing open access to the Science Museum
+    Group's collection of over 7 million objects, people, and documents across
+    five UK museums: the Science Museum (London), the Science and Industry
+    Museum (Manchester), the National Railway Museum (York), the National
+    Science and Media Museum (Bradford), and Locomotion (Shildon). The API
+    supports full-text search, filtering, and individual record retrieval with
+    rich metadata, image references, and curatorial annotations.
+  version: 1.0.0
+  contact:
+    name: Science Museum Group Collections
+    url: https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api
+  license:
+    name: Open Government License
+    url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+servers:
+  - url: https://collection.sciencemuseumgroup.org.uk
+    description: Science Museum Group Collection API
+tags:
+  - name: Objects
+    description: Scientific instruments, industrial artifacts, and cultural items in the collection
+  - name: People
+    description: People associated with the museum collections including makers, scientists, and historical figures
+  - name: Documents
+    description: Documents, archives, and written records in the collection
+  - name: Search
+    description: Full-text and filtered search across all collection types
+paths:
+  /search:
+    get:
+      operationId: searchAll
+      summary: Search All Collection Types
+      description: >-
+        Perform a full-text or filtered search across objects, people, and
+        documents in the Science Museum Group collection. Returns JSONAPI-formatted
+        results with pagination, relevance scoring, and filter aggregations.
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Full-text search query term
+          required: false
+          schema:
+            type: string
+          example: steam engine
+        - name: random
+          in: query
+          description: Return N random records from the collection
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: page[number]
+          in: query
+          description: Zero-indexed page number for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: page[size]
+          in: query
+          description: Number of results per page (max 100)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+        - name: date[from]
+          in: query
+          description: Filter results from this date (year, year-month, or full date)
+          required: false
+          schema:
+            type: string
+          example: 1800
+        - name: date[to]
+          in: query
+          description: Filter results up to this date (year, year-month, or full date)
+          required: false
+          schema:
+            type: string
+          example: 1900
+        - name: places
+          in: query
+          description: Filter by geographical association
+          required: false
+          schema:
+            type: string
+          example: France
+        - name: images
+          in: query
+          description: Filter to only items with available images
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successful search response
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CollectionSearchResponse'
+  /search/objects:
+    get:
+      operationId: searchObjects
+      summary: Search Collection Objects
+      description: >-
+        Search for physical objects and artifacts in the Science Museum Group
+        collection. Supports filtering by object type, makers, people,
+        categories, museum branch, on-display status, and location.
+      tags:
+        - Objects
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Full-text search query term
+          required: false
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by object type
+          required: false
+          schema:
+            type: string
+        - name: makers
+          in: query
+          description: Filter by maker or manufacturer name
+          required: false
+          schema:
+            type: string
+        - name: people
+          in: query
+          description: Filter by associated person
+          required: false
+          schema:
+            type: string
+        - name: categories
+          in: query
+          description: Filter by collection category
+          required: false
+          schema:
+            type: string
+        - name: museum
+          in: query
+          description: Filter by museum code (NRM, SMG, NMeM, MSI)
+          required: false
+          schema:
+            type: string
+            enum:
+              - NRM
+              - SMG
+              - NMeM
+              - MSI
+        - name: on_display
+          in: query
+          description: Filter to objects currently on display
+          required: false
+          schema:
+            type: boolean
+        - name: location
+          in: query
+          description: Filter by gallery or storage location
+          required: false
+          schema:
+            type: string
+        - name: images
+          in: query
+          description: Filter to objects with available images
+          required: false
+          schema:
+            type: boolean
+        - name: places
+          in: query
+          description: Filter by geographical association
+          required: false
+          schema:
+            type: string
+        - name: date[from]
+          in: query
+          description: Filter from date
+          required: false
+          schema:
+            type: string
+        - name: date[to]
+          in: query
+          description: Filter to date
+          required: false
+          schema:
+            type: string
+        - name: page[number]
+          in: query
+          description: Zero-indexed page number
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: page[size]
+          in: query
+          description: Results per page (max 100)
+          required: false
+          schema:
+            type: integer
+            maximum: 100
+            default: 50
+      responses:
+        '200':
+          description: Successful object search response
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ObjectSearchResponse'
+  /search/people:
+    get:
+      operationId: searchPeople
+      summary: Search Collection People
+      description: >-
+        Search for people associated with the Science Museum Group collection,
+        including scientists, engineers, makers, and historical figures. Supports
+        filtering by birth place, birth date, death date, occupation, and
+        geographical associations.
+      tags:
+        - People
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Full-text search query term
+          required: false
+          schema:
+            type: string
+        - name: birth[place]
+          in: query
+          description: Filter by birth place
+          required: false
+          schema:
+            type: string
+        - name: birth[date]
+          in: query
+          description: Filter by birth date (year or year-month)
+          required: false
+          schema:
+            type: string
+        - name: death[date]
+          in: query
+          description: Filter by death date (year or year-month)
+          required: false
+          schema:
+            type: string
+        - name: occupation
+          in: query
+          description: Filter by occupation or profession
+          required: false
+          schema:
+            type: string
+        - name: places
+          in: query
+          description: Filter by geographical association
+          required: false
+          schema:
+            type: string
+        - name: images
+          in: query
+          description: Filter to people with available images
+          required: false
+          schema:
+            type: boolean
+        - name: page[number]
+          in: query
+          description: Zero-indexed page number
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: page[size]
+          in: query
+          description: Results per page (max 100)
+          required: false
+          schema:
+            type: integer
+            maximum: 100
+            default: 50
+      responses:
+        '200':
+          description: Successful people search response
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/PeopleSearchResponse'
+  /search/documents:
+    get:
+      operationId: searchDocuments
+      summary: Search Collection Documents
+      description: >-
+        Search for documents, archives, and written records in the Science
+        Museum Group collection. Supports filtering by makers, associated
+        people, and archive reference.
+      tags:
+        - Documents
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Full-text search query term
+          required: false
+          schema:
+            type: string
+        - name: makers
+          in: query
+          description: Filter by document creator or maker
+          required: false
+          schema:
+            type: string
+        - name: people
+          in: query
+          description: Filter by associated person
+          required: false
+          schema:
+            type: string
+        - name: archive
+          in: query
+          description: Filter by archive reference
+          required: false
+          schema:
+            type: string
+        - name: places
+          in: query
+          description: Filter by geographical association
+          required: false
+          schema:
+            type: string
+        - name: date[from]
+          in: query
+          description: Filter from date
+          required: false
+          schema:
+            type: string
+        - name: date[to]
+          in: query
+          description: Filter to date
+          required: false
+          schema:
+            type: string
+        - name: images
+          in: query
+          description: Filter to documents with available images
+          required: false
+          schema:
+            type: boolean
+        - name: page[number]
+          in: query
+          description: Zero-indexed page number
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: page[size]
+          in: query
+          description: Results per page (max 100)
+          required: false
+          schema:
+            type: integer
+            maximum: 100
+            default: 50
+      responses:
+        '200':
+          description: Successful document search response
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/DocumentSearchResponse'
+  /objects/{id}:
+    get:
+      operationId: getObject
+      summary: Get Collection Object
+      description: >-
+        Retrieve a single collection object by its unique identifier. Returns
+        the full JSONAPI resource record including all metadata, image references,
+        relationships to people and documents, and curatorial notes.
+      tags:
+        - Objects
+      parameters:
+        - name: id
+          in: path
+          description: Unique collection object identifier (e.g., co26704)
+          required: true
+          schema:
+            type: string
+          example: co26704
+      responses:
+        '200':
+          description: Successful object retrieval
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ObjectResponse'
+        '404':
+          description: Object not found
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /people/{id}:
+    get:
+      operationId: getPerson
+      summary: Get Collection Person
+      description: >-
+        Retrieve a single person record by its unique identifier. Returns the
+        full JSONAPI resource record including biographical information, image
+        references, and relationships to collection objects and documents.
+      tags:
+        - People
+      parameters:
+        - name: id
+          in: path
+          description: Unique person identifier
+          required: true
+          schema:
+            type: string
+          example: cp22644
+      responses:
+        '200':
+          description: Successful person retrieval
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/PersonResponse'
+        '404':
+          description: Person not found
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /documents/{id}:
+    get:
+      operationId: getDocument
+      summary: Get Collection Document
+      description: >-
+        Retrieve a single document record by its unique identifier. Returns
+        the full JSONAPI resource record including document metadata, image
+        references, archive location, and relationships to people and objects.
+      tags:
+        - Documents
+      parameters:
+        - name: id
+          in: path
+          description: Unique document identifier
+          required: true
+          schema:
+            type: string
+          example: cd23456
+      responses:
+        '200':
+          description: Successful document retrieval
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '404':
+          description: Document not found
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CollectionResource:
+      type: object
+      description: A JSONAPI resource item in the collection
+      properties:
+        id:
+          type: string
+          description: Unique resource identifier
+        type:
+          type: string
+          enum:
+            - objects
+            - people
+            - documents
+          description: Resource type
+        attributes:
+          type: object
+          description: Resource attributes and metadata
+          properties:
+            name:
+              type: object
+              description: Name information with primary and alternate names
+            summary:
+              type: string
+              description: Brief summary of the item
+            description:
+              type: string
+              description: Detailed description
+            date:
+              type: object
+              description: Date information including earliest and latest dates
+            images:
+              type: object
+              description: Image references and media information
+            museums:
+              type: array
+              description: Museums where the item is held
+              items:
+                type: string
+            on_display:
+              type: boolean
+              description: Whether the item is currently on public display
+            location:
+              type: object
+              description: Gallery or storage location information
+        relationships:
+          type: object
+          description: Related resources
+          properties:
+            makers:
+              type: object
+              description: People or organizations who made or created the item
+            people:
+              type: object
+              description: People associated with this item
+            documents:
+              type: object
+              description: Related documents
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+              description: Canonical URL for this resource
+    CollectionSearchResponse:
+      type: object
+      description: JSONAPI search response across all collection types
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching results
+            took:
+              type: number
+              description: Search execution time in milliseconds
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    ObjectSearchResponse:
+      type: object
+      description: JSONAPI search response for collection objects
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching objects
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    PeopleSearchResponse:
+      type: object
+      description: JSONAPI search response for collection people
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching people
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    DocumentSearchResponse:
+      type: object
+      description: JSONAPI search response for collection documents
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching documents
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    ObjectResponse:
+      type: object
+      description: JSONAPI response for a single collection object
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
+    PersonResponse:
+      type: object
+      description: JSONAPI response for a single person record
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
+    DocumentResponse:
+      type: object
+      description: JSONAPI response for a single document record
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
+    PaginationLinks:
+      type: object
+      description: JSONAPI pagination links
+      properties:
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
+    ErrorResponse:
+      type: object
+      description: JSONAPI error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
