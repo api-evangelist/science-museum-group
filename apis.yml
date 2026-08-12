@@ -139,6 +139,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/TheScienceMuseum/collectionsonline-api/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/science-museum-group-agentic-access.yml
   - type: DomainSecurity
