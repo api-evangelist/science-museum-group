@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Science Museum Group Collection Documents Objects API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collection Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search/objects",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object type"
+              },
+              {
+                "name": "makers",
+                "value": "",
+                "type": "query",
+                "description": "Filter by maker or manufacturer name"
+              },
+              {
+                "name": "people",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated person"
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection category"
+              },
+              {
+                "name": "museum",
+                "value": "",
+                "type": "query",
+                "description": "Filter by museum code (NRM, SMG, NMeM, MSI)"
+              },
+              {
+                "name": "on_display",
+                "value": "",
+                "type": "query",
+                "description": "Filter to objects currently on display"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "Filter by gallery or storage location"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to objects with available images"
+              },
+              {
+                "name": "places",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "date[from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter from date"
+              },
+              {
+                "name": "date[to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter to date"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100)"
+              }
+            ]
+          },
+          "docs": "Search for physical objects and artifacts in the Science Museum Group collection. Supports filtering by object type, makers, people, categories, museum branch, on-display status, and location."
+        },
+        {
+          "info": {
+            "name": "Get Collection Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/objects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "co26704",
+                "type": "path",
+                "description": "Unique collection object identifier (e.g., co26704)"
+              }
+            ]
+          },
+          "docs": "Retrieve a single collection object by its unique identifier. Returns the full JSONAPI resource record including all metadata, image references, relationships to people and documents, and curatorial notes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

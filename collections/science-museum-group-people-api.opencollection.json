@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Science Museum Group Collection Documents People API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collection People",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/search/people",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query term"
+              },
+              {
+                "name": "birth[place]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by birth place"
+              },
+              {
+                "name": "birth[date]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by birth date (year or year-month)"
+              },
+              {
+                "name": "death[date]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by death date (year or year-month)"
+              },
+              {
+                "name": "occupation",
+                "value": "",
+                "type": "query",
+                "description": "Filter by occupation or profession"
+              },
+              {
+                "name": "places",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographical association"
+              },
+              {
+                "name": "images",
+                "value": "",
+                "type": "query",
+                "description": "Filter to people with available images"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Zero-indexed page number"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100)"
+              }
+            ]
+          },
+          "docs": "Search for people associated with the Science Museum Group collection, including scientists, engineers, makers, and historical figures. Supports filtering by birth place, birth date, death date, occupation, and geographical associations."
+        },
+        {
+          "info": {
+            "name": "Get Collection Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://collection.sciencemuseumgroup.org.uk/people/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "cp22644",
+                "type": "path",
+                "description": "Unique person identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a single person record by its unique identifier. Returns the full JSONAPI resource record including biographical information, image references, and relationships to collection objects and documents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
