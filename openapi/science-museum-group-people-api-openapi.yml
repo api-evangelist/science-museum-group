@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Science Museum Group Collection Documents People API
+  title: Science Museum Group Collection People API
   description: 'A JSONAPI-compliant REST API providing open access to the Science Museum Group''s collection of over 7 million objects, people, and documents across five UK museums: the Science Museum (London), the Science and Industry Museum (Manchester), the National Railway Museum (York), the National Science and Media Museum (Bradford), and Locomotion (Shildon). The API supports full-text search, filtering, and individual record retrieval with rich metadata, image references, and curatorial annotations.'
   version: 1.0.0
   contact:
@@ -118,6 +118,68 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    PersonResponse:
+      type: object
+      description: JSONAPI response for a single person record
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
+    ErrorResponse:
+      type: object
+      description: JSONAPI error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
+    PeopleSearchResponse:
+      type: object
+      description: JSONAPI search response for collection people
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching people
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    PaginationLinks:
+      type: object
+      description: JSONAPI pagination links
+      properties:
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -182,65 +244,3 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
-    PersonResponse:
-      type: object
-      description: JSONAPI response for a single person record
-      properties:
-        data:
-          $ref: '#/components/schemas/CollectionResource'
-    ErrorResponse:
-      type: object
-      description: JSONAPI error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: HTTP status code
-              title:
-                type: string
-                description: Error title
-              detail:
-                type: string
-                description: Error detail message
-    PeopleSearchResponse:
-      type: object
-      description: JSONAPI search response for collection people
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching people
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-    PaginationLinks:
-      type: object
-      description: JSONAPI pagination links
-      properties:
-        first:
-          type: string
-          format: uri
-          description: Link to the first page
-        last:
-          type: string
-          format: uri
-          description: Link to the last page
-        prev:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the previous page
-        next:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the next page
