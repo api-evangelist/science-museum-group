@@ -118,68 +118,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    PersonResponse:
-      type: object
-      description: JSONAPI response for a single person record
-      properties:
-        data:
-          $ref: '#/components/schemas/CollectionResource'
-    ErrorResponse:
-      type: object
-      description: JSONAPI error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: HTTP status code
-              title:
-                type: string
-                description: Error title
-              detail:
-                type: string
-                description: Error detail message
-    PeopleSearchResponse:
-      type: object
-      description: JSONAPI search response for collection people
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching people
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-    PaginationLinks:
-      type: object
-      description: JSONAPI pagination links
-      properties:
-        first:
-          type: string
-          format: uri
-          description: Link to the first page
-        last:
-          type: string
-          format: uri
-          description: Link to the last page
-        prev:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the previous page
-        next:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the next page
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -244,3 +182,65 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
+    PeopleSearchResponse:
+      type: object
+      description: JSONAPI search response for collection people
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching people
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    ErrorResponse:
+      type: object
+      description: JSONAPI error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
+    PersonResponse:
+      type: object
+      description: JSONAPI response for a single person record
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
+    PaginationLinks:
+      type: object
+      description: JSONAPI pagination links
+      properties:
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
