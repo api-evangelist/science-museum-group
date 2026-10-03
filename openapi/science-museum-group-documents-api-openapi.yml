@@ -130,22 +130,28 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/CollectionResource'
-    DocumentSearchResponse:
+    PaginationLinks:
       type: object
-      description: JSONAPI search response for collection documents
+      description: JSONAPI pagination links
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching documents
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -210,6 +216,22 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
+    DocumentSearchResponse:
+      type: object
+      description: JSONAPI search response for collection documents
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching documents
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
     ErrorResponse:
       type: object
       description: JSONAPI error response
@@ -228,25 +250,3 @@ components:
               detail:
                 type: string
                 description: Error detail message
-    PaginationLinks:
-      type: object
-      description: JSONAPI pagination links
-      properties:
-        first:
-          type: string
-          format: uri
-          description: Link to the first page
-        last:
-          type: string
-          format: uri
-          description: Link to the last page
-        prev:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the previous page
-        next:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the next page

@@ -153,6 +153,28 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    PaginationLinks:
+      type: object
+      description: JSONAPI pagination links
+      properties:
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -217,24 +239,6 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
-    ErrorResponse:
-      type: object
-      description: JSONAPI error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: HTTP status code
-              title:
-                type: string
-                description: Error title
-              detail:
-                type: string
-                description: Error detail message
     ObjectSearchResponse:
       type: object
       description: JSONAPI search response for collection objects
@@ -257,25 +261,21 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/CollectionResource'
-    PaginationLinks:
+    ErrorResponse:
       type: object
-      description: JSONAPI pagination links
+      description: JSONAPI error response
       properties:
-        first:
-          type: string
-          format: uri
-          description: Link to the first page
-        last:
-          type: string
-          format: uri
-          description: Link to the last page
-        prev:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the previous page
-        next:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the next page
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
