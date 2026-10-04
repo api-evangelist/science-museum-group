@@ -175,6 +175,30 @@ components:
           format: uri
           nullable: true
           description: Link to the next page
+    ErrorResponse:
+      type: object
+      description: JSONAPI error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
+    ObjectResponse:
+      type: object
+      description: JSONAPI response for a single collection object
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -255,27 +279,3 @@ components:
               description: Total number of matching objects
         links:
           $ref: '#/components/schemas/PaginationLinks'
-    ObjectResponse:
-      type: object
-      description: JSONAPI response for a single collection object
-      properties:
-        data:
-          $ref: '#/components/schemas/CollectionResource'
-    ErrorResponse:
-      type: object
-      description: JSONAPI error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: HTTP status code
-              title:
-                type: string
-                description: Error title
-              detail:
-                type: string
-                description: Error detail message

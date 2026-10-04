@@ -124,12 +124,22 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    DocumentResponse:
+    DocumentSearchResponse:
       type: object
-      description: JSONAPI response for a single document record
+      description: JSONAPI search response for collection documents
       properties:
         data:
-          $ref: '#/components/schemas/CollectionResource'
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching documents
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
     PaginationLinks:
       type: object
       description: JSONAPI pagination links
@@ -152,6 +162,30 @@ components:
           format: uri
           nullable: true
           description: Link to the next page
+    ErrorResponse:
+      type: object
+      description: JSONAPI error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: HTTP status code
+              title:
+                type: string
+                description: Error title
+              detail:
+                type: string
+                description: Error detail message
+    DocumentResponse:
+      type: object
+      description: JSONAPI response for a single document record
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionResource'
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -216,37 +250,3 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
-    DocumentSearchResponse:
-      type: object
-      description: JSONAPI search response for collection documents
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching documents
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-    ErrorResponse:
-      type: object
-      description: JSONAPI error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: HTTP status code
-              title:
-                type: string
-                description: Error title
-              detail:
-                type: string
-                description: Error detail message
