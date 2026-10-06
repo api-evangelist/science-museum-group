@@ -35,7 +35,7 @@ description: >-
   curatorial notes.
 url: https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/apis.yml
 created: '2026-05-02'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
   - Museums
@@ -160,6 +160,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
+  - url: https://blog.sciencemuseumgroup.org.uk/feed/
+    type: BlogRSS
   - type: IssueTracker
     url: https://github.com/TheScienceMuseum/collectionsonline-api/issues
   - type: License
