@@ -160,6 +160,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/science-museum-group/refs/heads/main/vocabulary/science-museum-group-vocabulary.yml
 common:
+  - type: Plans
+    url: plans/science-museum-group-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/science-museum-group-rate-limits.yml
+  - type: FinOps
+    url: finops/science-museum-group-finops.yml
   - url: https://blog.sciencemuseumgroup.org.uk/feed/
     type: BlogRSS
   - type: IssueTracker
