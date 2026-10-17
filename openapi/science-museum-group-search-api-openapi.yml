@@ -349,79 +349,6 @@ paths:
                 $ref: '#/components/schemas/DocumentSearchResponse'
 components:
   schemas:
-    DocumentSearchResponse:
-      type: object
-      description: JSONAPI search response for collection documents
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching documents
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-    CollectionSearchResponse:
-      type: object
-      description: JSONAPI search response across all collection types
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching results
-            took:
-              type: number
-              description: Search execution time in milliseconds
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-    PaginationLinks:
-      type: object
-      description: JSONAPI pagination links
-      properties:
-        first:
-          type: string
-          format: uri
-          description: Link to the first page
-        last:
-          type: string
-          format: uri
-          description: Link to the last page
-        prev:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the previous page
-        next:
-          type: string
-          format: uri
-          nullable: true
-          description: Link to the next page
-    PeopleSearchResponse:
-      type: object
-      description: JSONAPI search response for collection people
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionResource'
-        meta:
-          type: object
-          properties:
-            total:
-              type: integer
-              description: Total number of matching people
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
     CollectionResource:
       type: object
       description: A JSONAPI resource item in the collection
@@ -486,6 +413,79 @@ components:
               type: string
               format: uri
               description: Canonical URL for this resource
+    PeopleSearchResponse:
+      type: object
+      description: JSONAPI search response for collection people
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching people
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    DocumentSearchResponse:
+      type: object
+      description: JSONAPI search response for collection documents
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching documents
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    CollectionSearchResponse:
+      type: object
+      description: JSONAPI search response across all collection types
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResource'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of matching results
+            took:
+              type: number
+              description: Search execution time in milliseconds
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    PaginationLinks:
+      type: object
+      description: JSONAPI pagination links
+      properties:
+        first:
+          type: string
+          format: uri
+          description: Link to the first page
+        last:
+          type: string
+          format: uri
+          description: Link to the last page
+        prev:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the previous page
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: Link to the next page
     ObjectSearchResponse:
       type: object
       description: JSONAPI search response for collection objects
